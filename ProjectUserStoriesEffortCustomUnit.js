@@ -22,12 +22,14 @@ tau
             ],
             sizes: [sizes.XS, sizes.S, sizes.M, sizes.L, sizes.XL, sizes.LIST],
             template: [
-                '<span class="tau-board-unit__value"><%= String(Math.round(this.data.effort)) %></span>'
+                '<span class="tau-board-unit__value"><%= String(Math.round(this.data.effort)) %></span>',
+                '<span class="tau-board-unit__points"><%= String(this.data.units[0] || "pt") %></span>'
             ],
             sampleData: {
-                effort: 30
+                effort: 30,
+                units: ["pt"]
             },
-            model: 'effort:UserStories.Sum(Effort)'
+            model: 'effort:UserStories.Sum(Effort), units:UserStories.Select(Units)' // should be less expencive
         }];
 
 
